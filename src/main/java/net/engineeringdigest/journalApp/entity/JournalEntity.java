@@ -1,11 +1,18 @@
 package net.engineeringdigest.journalApp.entity;
 
+
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.Date;
+
+@Document(collation = "journal_entities")
 public class JournalEntity {
-    public Long getId() {
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -25,8 +32,19 @@ public class JournalEntity {
         this.content = content;
     }
 
-    private Long id;
+    @id
+    private String id;
     private String title;
     private String content;
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    private Date date;
 
 }
