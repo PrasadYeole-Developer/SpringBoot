@@ -44,9 +44,9 @@ public class UserController {
         }
     }
 
-    @PutMapping
-    public ResponseEntity<UserEntity> updateUser(@RequestBody UserEntity user){
-        UserEntity oldUser = userService.findByUsername(user.getUserName());
+    @PutMapping("/{username}")
+    public ResponseEntity<UserEntity> updateUser(@PathVariable String username, @RequestBody UserEntity user){
+        UserEntity oldUser = userService.findByUsername(username);
         if(oldUser == null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
