@@ -6,6 +6,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SpringSecurity extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception{
-
+        http.authorizeHttpRequests()
+                .antMatchers("/journal/**").authenticated()
+                .anyRequest().permitAll()
+                .and()
+                .httpBasic();
     }
 }
